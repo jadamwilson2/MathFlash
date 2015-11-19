@@ -7,6 +7,7 @@ from ui_MathFlash import Ui_MathFlashWindow
 
 from gameContainer import gameContainer
 from flashCardWidget import flashCardWidget
+from fbBoxScoreWidget import fbBoxScoreWidget
 
 import mathConfig
 import json
@@ -24,6 +25,7 @@ class mainWidget(QMainWindow):
         
         self.ui.playerCombo.activated[int].connect(self.playerComboCall)
         self.ui.flashBtn.clicked.connect(self.flashBtnClicked)
+        self.ui.footballBoxBtn.clicked.connect(self.fbBoxBtnClicked)
 
     def populatePlayerCombo(self):
         self.ui.playerCombo.clear()
@@ -64,15 +66,20 @@ class mainWidget(QMainWindow):
         else:
             self.ui.accuracyTxt.setText('%d/%d (0%%)' % (correct, correct+wrong))
 
-    def loadSettings(self):
-        fname = os.path.abspath(os.path.expanduser('~/.mathflash/mathflash.json'))
+    def init_file(self, fname):
         if not os.path.exists(fname):
             if not os.path.exists(os.path.dirname(fname)):
                 os.makedirs(os.path.dirname(fname))
-            stg = {'players': {}}
-            json.dump(stg, open(fname,'w'))
+        stg = {'players': {}}
+        json.dump(stg, open(fname,'w'))
 
-        data = json.load(open(fname,'r'))
+    def loadSettings(self):
+        fname = os.path.abspath(os.path.expanduser('~/.mathflash/mathflash.json'))
+        try:
+            data = json.load(open(fname,'r'))
+        except:
+            self.init_file(fname)
+            data = json.load(open(fname,'r'))
         pdata = data['players']
         self.playerData = dict()
         lastPlayer = ''
@@ -136,6 +143,21 @@ class mainWidget(QMainWindow):
 
         cfg = self.playerData[self.currentPlayer]
         W = flashCardWidget(cfg)
+        dlg = gameContainer(W, cfg)
+        dlg.setModal(True)
+        dlg.exec_()
+        score = dlg.totalScore
+        correct = W.correct
+        wrong = W.wrong
+        self.updatePlayerStats(score, correct, wrong, 'flashCards')
+
+    def fbBoxBtnClicked(self):
+        if self.currentPlayer == '':
+            # TODO add dlg
+            return
+
+        cfg = self.playerData[self.currentPlayer]
+        W = fbBoxScoreWidget(cfg)
         dlg = gameContainer(W, cfg)
         dlg.setModal(True)
         dlg.exec_()
