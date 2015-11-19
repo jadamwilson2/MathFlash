@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QApplication, QDialog
 from mainWidget import mainWidget
-import mathConfig
 import sys
 
 def main():

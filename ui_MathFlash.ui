@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>572</width>
+    <width>497</width>
     <height>698</height>
    </rect>
   </property>
@@ -20,8 +20,8 @@
    <string>MathFlash!</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
      <widget class="QGroupBox" name="groupBox_2">
       <property name="font">
        <font>
@@ -90,7 +90,7 @@ margin-left: 4px;</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="totalScoreTxt">
          <property name="font">
           <font>
            <pointsize>30</pointsize>
@@ -98,6 +98,58 @@ margin-left: 4px;</string>
          </property>
          <property name="text">
           <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <pointsize>24</pointsize>
+           <underline>true</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>Current Level</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="curLevelTxt">
+         <property name="font">
+          <font>
+           <pointsize>30</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <pointsize>24</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+           <underline>true</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>Accuracy</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="accuracyTxt">
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
@@ -114,107 +166,10 @@ margin-left: 4px;</string>
          </property>
         </spacer>
        </item>
-       <item>
-        <widget class="QToolButton" name="toolButton">
-         <property name="text">
-          <string>Settings</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QWidget" name="widget" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QPushButton" name="addBtn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>23</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Addition +</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="subBtn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>23</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Subtraction -</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="multBtn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>23</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Multiplication *</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="divBtn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>23</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Division /</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="2">
+    <item>
      <widget class="QGroupBox" name="groupBox">
       <property name="minimumSize">
        <size>
@@ -232,9 +187,9 @@ margin-left: 4px;</string>
       <property name="title">
        <string>Game</string>
       </property>
-      <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0">
-       <item row="0" column="1">
-        <widget class="QPushButton" name="tableBtn">
+      <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="flashBtn">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
            <horstretch>0</horstretch>
@@ -260,39 +215,8 @@ margin-left: 4px;</string>
           </font>
          </property>
          <property name="text">
-          <string>Table</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="footballBoxBtn">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>100</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>120</width>
-           <height>100</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Cambria Math</family>
-           <pointsize>20</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Football
-Box Scores</string>
+          <string>Flash
+Cards</string>
          </property>
         </widget>
        </item>
@@ -328,8 +252,8 @@ Box Scores</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="pushButton_3">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="footballBoxBtn">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
            <horstretch>0</horstretch>
@@ -355,12 +279,13 @@ Box Scores</string>
           </font>
          </property>
          <property name="text">
-          <string>BINGO!</string>
+          <string>Football
+Box Scores</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="flashBtn">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="tableBtn">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
            <horstretch>0</horstretch>
@@ -386,8 +311,7 @@ Box Scores</string>
           </font>
          </property>
          <property name="text">
-          <string>Flash
-Cards</string>
+          <string>Table</string>
          </property>
         </widget>
        </item>
@@ -401,7 +325,7 @@ Cards</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>572</width>
+     <width>497</width>
      <height>22</height>
     </rect>
    </property>
