@@ -30,7 +30,9 @@ class gameWidget(QWidget):
         self.timer.timeout.connect(self.updateTimer)
         
     def updateTimer(self):
-        dt = time.time() - self.startTime 
+        dt = time.time() - self.startTime
+        if self.cfg['level'] < 4:
+            dt = 0
         if dt > self.cfg['maxTime']:
             self.timer.stop()
         curScore = max(self.cfg['minPoints'], int((self.cfg['maxTime']-dt)*self.cfg['pointsPerSec']))
