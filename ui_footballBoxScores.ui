@@ -399,6 +399,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>fieldGoalSpin</tabstop>
+  <tabstop>TD7spin</tabstop>
+  <tabstop>TD6spin</tabstop>
+  <tabstop>TD8spin</tabstop>
+  <tabstop>safetySpin</tabstop>
+  <tabstop>checkBtn</tabstop>
+  <tabstop>scoreTable</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

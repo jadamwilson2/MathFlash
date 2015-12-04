@@ -87,7 +87,7 @@ class fbBoxScoreWidget(gameWidget):
         self.curScore = self.cfg['maxTime']*self.cfg['pointsPerSec']
         self.startTime = time.time()
         nextq = self.fbQuestion.getNextQuestion(self.cfg)
-        self.gameType = 2 #random.randrange(2)
+        self.gameType = random.randrange(2)
 
         self.ui.gameInfoLabel.setText('%s at %s on %s at %s' % (nextq.awayTeam, nextq.homeTeam, nextq.gameDate.strftime('%b %d, %Y'), nextq.gameTime))
         try:
@@ -114,7 +114,7 @@ class fbBoxScoreWidget(gameWidget):
                     self.ui.scoreTable.item(1,q).setText('')
                     self.awayAnswer = nextq.awayScores[q]
 
-        elif self.gameType == 1:
+        elif self.gameType == 3:
             self.ui.stackedWidget.setCurrentIndex(0)
             self.ui.instrTxt.setText('Enter scores that add up to the final')
             for q in range(4):
@@ -123,9 +123,9 @@ class fbBoxScoreWidget(gameWidget):
             self.homeAnswer = nextq.homeFinalScore
             self.awayAnswer = nextq.awayFinalScore
 
-        elif self.gameType == 2:
+        elif self.gameType == 1:
             self.ui.stackedWidget.setCurrentIndex(1)
-            if nextq.awayFinalScore > nextq.homeFinalScore:
+            if random.randrange(2)==0:
                 team = nextq.awayTeam
                 score = nextq.awayFinalScore
             else:
@@ -147,8 +147,6 @@ class fbBoxScoreWidget(gameWidget):
         self.bonus = 1.
 
         self.ui.scoreTable.cellChanged.connect(self.checkCell)
-
-        #self.timer.start()
 
     def checkCell(self, row, col):
         self.ui.feedbackLabel.setText('')
@@ -173,7 +171,7 @@ class fbBoxScoreWidget(gameWidget):
 
             self.finalizeAnswer()
 
-        elif self.gameType == 1:
+        elif self.gameType == 3:
             homeVals = []
             awayVals = []
             homeAns = 0
@@ -189,7 +187,7 @@ class fbBoxScoreWidget(gameWidget):
             self.homeTry = homeAns
             self.awayTry = awayAns
             self.finalizeAnswer()
-        elif self.gameType == 2:
+        elif self.gameType == 1:
             scoreTry = 3*self.ui.fieldGoalSpin.value() + 6*self.ui.TD6spin.value() + 7*self.ui.TD7spin.value() + 8*self.ui.TD8spin.value() + 2*self.ui.safetySpin.value()
 
             if self.ui.fieldGoalSpin.value() > 0:
